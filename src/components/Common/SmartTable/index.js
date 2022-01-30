@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { lighten } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import { makeStyles, styled } from "@mui/styles";
 import Table from "@mui/material/Table";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
@@ -10,44 +9,48 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
-import { Box, InputBase, TableSortLabel } from "@mui/material";
+import { Box, InputBase, lighten, TableSortLabel } from "@mui/material";
 import TableData from "./TableData";
-import { styled } from "@mui/styles";
-import SearchIcon from "@mui/icons-material/Search";
-import { getComparator, handleSearch, stableSort } from "./functions";
+import SearchIcon from '@mui/icons-material/Search';
+import {
+  getComparator,
+  handleSearch,
+  stableSort,
+} from "./functions";
 
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  maxHeight: "45px !important",
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  maxHeight: '45px !important',
   borderRadius: theme.palette.radius.base,
   backgroundColor: theme.palette.gray[400],
-  "&:hover": {
+  '&:hover': {
     backgroundColor: theme.palette.gray[600],
   },
   marginLeft: 0,
-  width: "auto",
+  width: 'auto',
+
 }));
 
-const SearchIconWrapper = styled("div")(({ theme }) => ({
+const SearchIconWrapper = styled('div')(({ theme }) => ({
   padding: theme.spacing(1.5),
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
   color: theme.palette.grey[500],
-  justifyContent: "center",
+  justifyContent: 'center',
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
+  color: 'inherit',
+  '& .MuiInputBase-input': {
     padding: theme.spacing(1.5),
     paddingLeft: theme.spacing(5),
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    height: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    height: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '20ch',
     },
   },
 }));
@@ -62,8 +65,15 @@ function descendingComparator(a, b, orderBy) {
   return 0;
 }
 
+
 function EnhancedTableHead(props) {
-  const { classes, sortable, header, orderBy, order, onRequestSort } = props;
+  const {
+    classes,
+    sortable,
+    header,
+    orderBy, order,
+    onRequestSort,
+  } = props;
   const createSortHandler = (event, property) => {
     onRequestSort(event, property);
   };
@@ -71,7 +81,7 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-        <TableCell className={classes.headCell} width="5%">
+        <TableCell className={classes.headCell} width="5%" >
           No.
         </TableCell>
         {header.map((headCell) => (
@@ -81,22 +91,19 @@ function EnhancedTableHead(props) {
             className={classes.headCell}
             sortDirection={orderBy === headCell.key ? order : false}
           >
-            {sortable && (
-              <TableSortLabel
-                active={orderBy === headCell.key}
-                direction={orderBy === headCell.key ? order : "asc"}
-                onClick={(event) => createSortHandler(event, headCell.key)}
-              >
-                {headCell.title}
-                {orderBy === headCell.id ? (
-                  <span className={classes.visuallyHidden}>
-                    {order === "desc"
-                      ? "sorted descending"
-                      : "sorted ascending"}
-                  </span>
-                ) : null}
-              </TableSortLabel>
-            )}
+            {sortable && <TableSortLabel
+              active={orderBy === headCell.key}
+              direction={orderBy === headCell.key ? order : "asc"}
+              onClick={(event) => createSortHandler(event, headCell.key)}
+            >
+              {headCell.title}
+              {orderBy === headCell.id ? (
+                <span className={classes.visuallyHidden}>
+                  {order === "desc" ? "sorted descending" : "sorted ascending"}
+                </span>
+              ) : null}
+            </TableSortLabel>
+            }
           </TableCell>
         ))}
         {props.showActionHeader && (
@@ -134,7 +141,7 @@ const useToolbarStyles = makeStyles((theme) => ({
       },
   title: {
     fontSize: theme.palette.fontSizes.md,
-    fontWeight: theme.palette.fontWeights.semiBold,
+    fontWeight: theme.palette.fontWeights.semiBold
   },
 }));
 
@@ -142,7 +149,13 @@ const EnhancedTableToolbar = (props) => {
   const classes = useToolbarStyles();
   const { numSelected } = props;
 
-  return <Typography className={classes.title}>{props.title}</Typography>;
+  return (
+    <Typography
+      className={classes.title}
+    >
+      {props.title}
+    </Typography>
+  )
 };
 
 EnhancedTableToolbar.propTypes = {
@@ -157,12 +170,12 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     marginBottom: theme.spacing(2),
     border: `1px solid ${theme.palette.gray[700]}`,
-    borderRadius: theme.palette.radius.medium,
+    borderRadius: theme.palette.radius.medium
   },
   tableTitleContainer: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     padding: theme.spacing(1.5, 2),
   },
   visuallyHidden: {
@@ -181,31 +194,26 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.inverted,
     fontSize: theme.palette.fontSizes.base,
     fontWeight: theme.palette.fontSizes.medium,
-    border: "none",
-    "&:first-child": {
-      boxShadow: "rgb(255 255 255) 8px 0px 0px inset",
+    border: 'none',
+    '&:first-child': {
+      boxShadow: 'rgb(255 255 255) 8px 0px 0px inset',
       borderTopLeftRadius: theme.palette.radius.base,
       borderBottomLeftRadius: theme.palette.radius.base,
-      paddingLeft: theme.spacing(3),
+      paddingLeft: theme.spacing(3)
     },
-    "&:last-child": {
-      boxShadow: "rgb(255 255 255) -8px 0px 0px inset",
+    '&:last-child': {
+      boxShadow: 'rgb(255 255 255) -8px 0px 0px inset',
       borderTopRightRadius: theme.palette.radius.base,
       borderBottomRightRadius: theme.palette.radius.base,
-      paddingRight: theme.spacing(3),
-    },
+      paddingRight: theme.spacing(3)
+    }
     // fontWeight: 600,
   },
 }));
 
 export default function EnhancedTable(props) {
-  const {
-    setTableData,
-    searchByLabel,
-    searchByField = [],
-    tableData = [],
-    sortable,
-  } = props;
+  const { setTableData, searchByLabel,
+    searchByField = [], tableData = [], sortable } = props
   const classes = useStyles();
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("calories");
@@ -261,7 +269,11 @@ export default function EnhancedTable(props) {
     setPage(0);
   };
   React.useEffect(() => {
-    setRows(tableData);
+    if (!searchQuery) {
+      setRows(tableData);
+    } else {
+      setRows(handleSearch(tableData, searchByField, searchQuery));
+    }
 
     if (!props.paginated) {
       setRowsPerPage(props.perPageRows || tableData.length);
@@ -279,6 +291,7 @@ export default function EnhancedTable(props) {
     <div className={classes.root}>
       <Paper className={classes.paper} elevation={0} variant={props?.variant}>
         <Box className={classes.tableTitleContainer}>
+
           <EnhancedTableToolbar
             title={props.tableTitle || "Table Title"}
             numSelected={selected.length}
@@ -291,13 +304,13 @@ export default function EnhancedTable(props) {
               </SearchIconWrapper>
               <StyledInputBase
                 placeholder={`Search by ${searchByLabel}`}
-                inputProps={{ "aria-label": "search" }}
+                inputProps={{ 'aria-label': 'search' }}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </Search>
           )}
         </Box>
-        <TableContainer >
+        <TableContainer>
           <Table
             className={classes.table}
             aria-labelledby="tableTitle"

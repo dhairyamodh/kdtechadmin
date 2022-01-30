@@ -15,11 +15,11 @@ const LeftSideBarRoutes = [
     icon: <DashIcon />,
     path: "/",
   },
-  // {
-  //     title: "Users",
-  //     icon: <UserIcon />,
-  //     path: "/users",
-  // },
+  {
+    title: "Users",
+    icon: <UserIcon />,
+    path: "/users",
+  },
   {
     type: "heading",
     title: "Content",

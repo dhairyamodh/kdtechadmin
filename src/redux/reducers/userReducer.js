@@ -6,7 +6,7 @@ const initialstate = {
   isLogged: false,
   getDetailsLoading: false,
   token: undefined,
-
+  users: [],
   closeModal: false,
 };
 
@@ -82,6 +82,12 @@ const sizeReducer = (state = initialstate, action) => {
     case userTypes.DELETE_USER_SUCCESS:
       return {
         ...state,
+      };
+
+    case userTypes.GET_ALL_USERS_SUCCESS:
+      return {
+        ...state,
+        users: getData(),
       };
 
     case authTypes.LOGOUT_USER:

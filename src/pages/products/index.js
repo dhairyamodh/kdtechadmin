@@ -21,7 +21,7 @@ const Categories = () => {
 
   const { products, categories, platforms } = useSelector((state) => state.all);
   const [isManyProduct, setIsManyProduct] = React.useState(false)
-
+  const { name, id } = useSelector(state => state.user)
   React.useEffect(() => {
     dispatch(getAllCategories());
     dispatch(getAllPlatform());
@@ -196,7 +196,7 @@ const Categories = () => {
 
     defaultFormValues: { productDescription: "<p>How To Get The Deal:</p><p>1. Click On Get Deal Button</p><p>2. Add Product To Cart Or Click On Buy 1</p><p>3. Select Address</p><p>4. Select The Payment Method</p><p>5. Place Order. Happy Looting</p>" },
     deleteVariableTitle: undefined,
-    onAdd: addProduct,
+    onAdd: (data) => addProduct({ ...data, postedBy: name, postedById: id }),
     onEdit: updateProduct,
     onDelete: deleteProduct,
     onImport: () => { },

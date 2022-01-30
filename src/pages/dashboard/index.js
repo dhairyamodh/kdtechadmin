@@ -7,6 +7,7 @@ import UsersComponent from "../users";
 import Products from "../products";
 import Categories from "../categories";
 import Platforms from "../platform"
+import Users from "../users"
 import { Route } from "react-router-dom";
 import NavBar from "../../components/Menu";
 import Offer from "../offer";
@@ -34,6 +35,10 @@ const DashBoard = () => {
     {
       component: <DashComponent />,
       path: "/",
+    },
+    {
+      component: <Users />,
+      path: "/users",
     },
     {
       component: <Platforms />,

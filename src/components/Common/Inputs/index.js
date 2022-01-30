@@ -1,4 +1,6 @@
 export { default as text } from "./Text";
+export { default as email } from "./Email";
+export { default as password } from "./Password";
 export { default as Button } from "./Button";
 export { default as select } from "./Select";
 export { default as multiselect } from "./MultiSelect";

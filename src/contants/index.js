@@ -28,6 +28,11 @@ export const ROOTURL = "";
 
 export const CURRENCY = "₹";
 
+export const ROLES = [
+  { title: "Admin", value: "admin" },
+  { title: "Employee", value: "employee" },
+];
+
 export const MONTHSARRAY = [
   "Jan",
   "Feb",
