@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { makeStyles, styled } from "@mui/styles";
+import { makeStyles } from "@mui/styles";
 import Table from "@mui/material/Table";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import { Box, InputBase, lighten, TableSortLabel } from "@mui/material";
 import TableData from "./TableData";
+import { styled } from "@mui/styles";
 import SearchIcon from '@mui/icons-material/Search';
 import {
   getComparator,
@@ -261,6 +262,7 @@ export default function EnhancedTable(props) {
   };
 
   const handleChangePage = (event, newPage) => {
+    console.log('handleChangePage', newPage);
     setPage(newPage);
   };
 
@@ -350,8 +352,8 @@ export default function EnhancedTable(props) {
             count={rows.length}
             rowsPerPage={rowsPerPage}
             page={page}
-            onChangePage={handleChangePage}
-            onChangeRowsPerPage={handleChangeRowsPerPage}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
           />
         )}
       </Paper>

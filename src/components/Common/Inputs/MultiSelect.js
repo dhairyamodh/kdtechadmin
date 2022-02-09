@@ -26,7 +26,6 @@ const MultiSelect = React.forwardRef((props) => {
         hasDefaultOption = false,
         onSelect,
     } = props;
-    console.log('defaultOption', defaultOption);
     return (
         <InputContainer size={size}>
             <FormControl fullWidth>

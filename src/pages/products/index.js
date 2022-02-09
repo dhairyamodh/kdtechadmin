@@ -194,9 +194,10 @@ const Categories = () => {
     tableRowActions: [ExpireAction],
     pageHeaderActions: [],
 
-    defaultFormValues: { productDescription: "<p>How To Get The Deal:</p><p>1. Click On Get Deal Button</p><p>2. Add Product To Cart Or Click On Buy 1</p><p>3. Select Address</p><p>4. Select The Payment Method</p><p>5. Place Order. Happy Looting</p>" },
+    defaultFormValues: { productDescription: "<span>How To Get The Deal:</span><br/><br/><span>1. Click On Get Deal Button</span><br/><span>2. Add Product To Cart Or Click On Buy 1</span><br/><span>3. Select Address</span><br/><span>4. Select The Payment Method</span><br/><span>5. Place Order. Happy Looting</span>", postedBy: name, postedById: id },
     deleteVariableTitle: undefined,
-    onAdd: (data) => addProduct({ ...data, postedBy: name, postedById: id }),
+    // onAdd: (data) => addProduct({ ...data, postedBy: name, postedById: id }),
+    onAdd: addProduct,
     onEdit: updateProduct,
     onDelete: deleteProduct,
     onImport: () => { },

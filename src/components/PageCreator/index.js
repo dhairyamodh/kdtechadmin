@@ -62,8 +62,6 @@ const PageCreator = ({
   afterDeleteSuccess = () => { },
   afterImportSuccess = () => { },
 }) => {
-  const showTitle = layout !== "tabular";
-
   const dispatch = useDispatch();
 
   const Layout = layouts[layout];
@@ -129,9 +127,10 @@ const PageCreator = ({
   };
 
   const onModalSubmit = (values) => {
-    console.log('values', values);
     const mode = state.openCommonModal;
     if (mode === "add") {
+      console.log('onModalSubmit', defaultFormValues);
+
       dispatch(
         onAdd({ ...defaultFormValues, ...state.actionData, ...values }, () => {
           closeModal();

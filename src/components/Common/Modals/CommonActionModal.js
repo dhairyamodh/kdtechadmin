@@ -131,7 +131,7 @@ const CommonActionModal = ({
               <Grid container spacing={2}>
                 {formData.map((item, index) => {
                   const MyInput = Inputs[item.type];
-                  console.log('item.name', item.name, data[item.name]);
+                  // console.log('item.name', item.name, data[item.name]);
                   return (
                     mode !== item?.hideAt && (
                       <MyInput

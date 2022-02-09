@@ -68,8 +68,8 @@ const LoginForm = () => {
 
   const methods = useForm({
     defaultValues: {
-      mobile: "9999999999",
-      password: "9999999999",
+      mobile: undefined,
+      password: undefined,
     },
   });
   const { handleSubmit, control, errors, reset } = methods;

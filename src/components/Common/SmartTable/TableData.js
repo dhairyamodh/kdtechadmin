@@ -1,27 +1,35 @@
 import { TableBody, TableRow } from "@mui/material";
-import MuiTableCell from "@mui/material/TableCell";
+import MuiTableCell from '@mui/material/TableCell'
 import { styled } from "@mui/styles";
 import React from "react";
 import * as ColumnLayouts from "./ColumnLayouts";
-const TableData = ({ data, header, actions, handleCheckChange }) => {
+const TableData = ({
+  data,
+  header,
+  actions,
+  handleCheckChange,
+}) => {
+
   const TableCell = styled(MuiTableCell)(({ theme }) => ({
-    border: "none",
+    border: 'none',
     padding: theme.spacing(0.5, 2),
-    "&:first-child": {
-      paddingLeft: theme.spacing(3),
+    '&:first-child': {
+      paddingLeft: theme.spacing(3)
     },
-    "&:last-child": {
-      paddingRight: theme.spacing(3),
-    },
+    '&:last-child': {
+      paddingRight: theme.spacing(3)
+    }
   }));
 
   const Nodata = () => (
-    <TableCell colSpan="20" style={{ textAlign: "center", padding: 10 }}>
+    <TableCell colSpan="20" style={{ textAlign: 'center', padding: 10 }} >
       {"No Data Available"}
     </TableCell>
   );
 
-  const NoColumn = () => <i style={{ color: "rgba(0,0,0,0.5)" }}>N/A</i>;
+  const NoColumn = () => (
+    <i style={{ color: 'rgba(0,0,0,0.5)' }}>N/A</i>
+  )
   const [selected, setSelected] = React.useState([]);
   const isSelected = (name) => selected.indexOf(name) !== -1;
   const isItemSelected = isSelected(data.name);
@@ -30,8 +38,11 @@ const TableData = ({ data, header, actions, handleCheckChange }) => {
       {data.length === 0 && <Nodata />}
       {data?.map((child, childindex) => {
         return (
-          <TableRow key={childindex}>
-            <TableCell>{++childindex}</TableCell>
+          <TableRow key={childindex}
+          >
+            <TableCell>
+              {++childindex}
+            </TableCell>
             {isItemSelected && (
               <TableCell>
                 <div class="checkbox">
@@ -83,16 +94,11 @@ const TableData = ({ data, header, actions, handleCheckChange }) => {
               );
             })}
             {actions?.length > 0 && (
-              <TableCell
-                valign="baseline"
-                style={{
-                  display: "flex",
-                  justifyContent: "flex-start",
-                  alignItems: "center",
-                }}
-              >
+              <TableCell valign="baseline" style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}>
                 {actions.map((Action, index) => {
-                  return <Action index={index} key={index} data={child} />;
+                  return (
+                    <Action index={index} key={index} data={child} />
+                  );
                 })}
               </TableCell>
             )}

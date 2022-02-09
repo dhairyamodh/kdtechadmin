@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => ({
   error: {
     backgroundColor: theme.palette.error.light,
     color: theme.palette.error.main,
-  },
-}));
+  }
+}))
 
 const StatusColumn = ({ data }) => {
   const True =
@@ -25,16 +25,13 @@ const StatusColumn = ({ data }) => {
         ? true
         : false
       : data
-      ? true
-      : false;
-  const classes = useStyles();
+        ? true
+        : false;
+  const classes = useStyles()
+
 
   return (
-    <span
-      className={clsx(classes.root, True ? classes.success : classes.error)}
-      success={True}
-      error={True}
-    >
+    <span className={clsx(classes.root, True ? classes.success : classes.error)} success={True} error={True}>
       {True ? "Active" : "Inactive"}
     </span>
   );
