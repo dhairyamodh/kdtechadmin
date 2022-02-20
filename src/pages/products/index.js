@@ -9,10 +9,12 @@ import {
   getAllProducts,
   deleteProduct,
   toggleExpire,
+  sendNotification,
 } from "../../redux/action/productActions";
 import { getAllCategories } from "../../redux/action/categoryActions";
 import { getAllPlatform } from "../../redux/action/platformActions";
 import { IconButton, Tooltip } from "@mui/material";
+import { NotificationAdd } from "@mui/icons-material";
 
 // import DateRangePicker from "react-bootstrap-daterangepicker";
 
@@ -144,13 +146,20 @@ const Categories = () => {
 
   const tableHeaders = [
     { title: "Image", key: "productImage", type: 'image' },
-    { title: "Product Name", key: "productName" },
+    {
+      title: "Product Name", key: "productName", style: { width: 200 }, renderRow: (d) => <span
+        style={{
+          display: "-webkit-box", maxWidth: "200px", WebkitLineClamp: "2", WebkitBoxOrient: "vertical", overflow: "hidden"
+        }}
+
+      >{d.productName}</span>
+    },
     { title: "Expire At", key: "expireAt", type: 'date' },
 
-    { title: "Base Price", key: "basePrice" },
+    { title: "Base Price", key: "basePrice", isCurrency: true },
     { title: "Sale Price", key: "salePrice" },
     { title: "Status", key: "status" },
-    { title: "Created At", key: "createdAt" },
+    { title: "Created At", key: "createdAt", type: 'date' },
   ];
 
   const handleExpire = (data) => {
@@ -158,6 +167,10 @@ const Categories = () => {
       dispatch(getAllProducts())
     }))
   }
+  const handleNotify = (data) => {
+    dispatch(sendNotification(data))
+  }
+
 
   const ExpireAction = (action) => {
     return (
@@ -169,13 +182,22 @@ const Categories = () => {
       </Tooltip>)
   }
 
+  const NotificationAction = (action) => {
+    return (
+      <Tooltip placement="top" title="Send Notification">
+        <IconButton onClick={() => handleNotify(action.data)}>
+          <NotificationAdd />
+        </IconButton>
+      </Tooltip>)
+  }
+
   const pageProps = {
     title: "Products",
     layout: "tabular",
     formData: formData,
     tableHeaders: tableHeaders,
     tableData: products,
-    searchByField: "productName",
+    searchByField: ["productName", "salePrice"],
     searchByLabel: "Product Name",
     modalSize: "lg",
     sortable: true,
@@ -191,7 +213,7 @@ const Categories = () => {
     // hideDelete: true,
     // hideAdd: true,
     // hideView: true,
-    tableRowActions: [ExpireAction],
+    tableRowActions: [ExpireAction, NotificationAction],
     pageHeaderActions: [],
 
     defaultFormValues: { productDescription: "<span>How To Get The Deal:</span><br/><br/><span>1. Click On Get Deal Button</span><br/><span>2. Add Product To Cart Or Click On Buy 1</span><br/><span>3. Select Address</span><br/><span>4. Select The Payment Method</span><br/><span>5. Place Order. Happy Looting</span>", postedBy: name, postedById: id },

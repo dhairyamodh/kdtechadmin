@@ -4,5 +4,7 @@ const productApi = {
   UPDATE_PRODUCTS: "/products/update",
   DELETE_PRODUCTS: "/products/delete",
   TOGGLE_EXPIRE: "/products/toggleexpire",
+  SEND_NOTIFICATION: "/products/notify",
+
 };
 export default productApi;

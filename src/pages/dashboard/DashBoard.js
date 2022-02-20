@@ -8,6 +8,9 @@ import RevenueIcon from "@mui/icons-material/MonetizationOnTwoTone";
 import PostIcon from "@mui/icons-material/ImageTwoTone";
 import SmartTable from "../../components/Common/SmartTable";
 import { numberWithCommas } from "../../contants";
+import { useDispatch, useSelector } from 'react-redux'
+import { getDashboardData } from '../../redux/action/dashboardAction'
+import { Category, Inventory, LocalOffer } from "@mui/icons-material";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,29 +21,44 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const DashComponent = () => {
+  const dispatch = useDispatch()
+
   const classes = useStyles();
+  const dashboard = useSelector(state => state.all.dashboard);
+
+
+  React.useEffect(() => {
+    dispatch(getDashboardData())
+  }, [])
+
+
+  console.log('dashboard data', dashboard)
+
+
 
   const INfoArray = [
     {
-      title: "Total Active Users",
+      title: "Total Users",
       icon: UserIcon,
-      count: 1000,
+      count: `${dashboard?.users}`,
     },
     {
-      title: "Total Subscriptions",
-      icon: SubscriptionIcon,
-      count: 10,
+      title: "Total Products",
+      icon: Inventory,
+      count: `${dashboard?.products}`,
+
     },
     {
-      title: "Total Revenue",
-      icon: RevenueIcon,
-      count: 45215,
-      currency: true,
+      title: "Total Offers",
+      icon: LocalOffer,
+      count: `${dashboard?.offers}`,
+
     },
     {
-      title: "Total Post",
-      icon: PostIcon,
-      count: 2045,
+      title: "Total Categories",
+      icon: Category,
+      count: `${dashboard?.categories}`,
+
     },
   ];
 
@@ -66,7 +84,7 @@ const DashComponent = () => {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        {INfoArray.map((item, index) => {
+        {dashboard && INfoArray.map((item, index) => {
           return (
             <InfoCard
               key={item.title}
@@ -77,14 +95,7 @@ const DashComponent = () => {
             />
           );
         })}
-        <Grid item lg={12}>
-          <SmartTable
-            header={TableHeader}
-            body={[]}
-            tableTitle="Latest Subscriptions"
-            onRowSelect={() => { }}
-          />
-        </Grid>
+
       </Grid>
     </div>
   );

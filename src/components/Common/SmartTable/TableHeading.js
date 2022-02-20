@@ -53,9 +53,8 @@ const TableHeading = ({
             <th class="sorting" style={styles.th}>
               {sortable && (
                 <i
-                  class={`mdi mdi-arrow-expand-${
-                    order === "asc" ? "up" : "down"
-                  }`}
+                  class={`mdi mdi-arrow-expand-${order === "asc" ? "up" : "down"
+                    }`}
                 ></i>
               )}
               <button

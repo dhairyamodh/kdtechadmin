@@ -1,15 +1,24 @@
-import { categoryTypes, productTypes, platformTypes, userTypes, offerTypes } from "../types";
+import { categoryTypes, productTypes, platformTypes, userTypes, offerTypes, dashboardTypes } from "../types";
 
 const initialstate = {
   users: [],
   categories: [],
   products: [],
   platforms: [],
-  offers: []
+  offers: [],
+  dashboard: undefined
 };
 
 const allDataReducer = (state = initialstate, action) => {
   switch (action.type) {
+
+    case dashboardTypes.GET_DASHBOARD_DATA_SUCCESS:
+      return {
+        ...state,
+        dashboard: action.payload.data.data,
+      };
+
+
     case productTypes.GET_ALL_PRODUCTS_SUCCESS:
       return {
         ...state,

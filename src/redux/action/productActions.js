@@ -133,3 +133,22 @@ export const toggleExpire = (data, cb, errorCb) => {
       },
     });
 };
+export const sendNotification = (data, cb, errorCb) => {
+  return (dispatch) =>
+    checkIfAsyncReqSuccess(dispatch, {
+      successMessage: "Notification sent Successfully",
+      errorMessage: "Failed to send notification",
+      enableMessage: true,
+      cb: cb,
+      errorCb: errorCb,
+      type: productTypes.SEND_NOTIFICATION,
+      payload: {
+        request: {
+          url: productApi.SEND_NOTIFICATION,
+          method: "post",
+          data: data,
+        },
+      },
+    });
+};
+
