@@ -23,7 +23,6 @@ export const getAllProducts = (cb, errorCb) => {
 export const addProduct = (data, cb, errorCb) => {
   const formData = new FormData();
   Object.keys(data).forEach((key) => {
-
     if (key === "productImage") {
       if (data["productImage"].length > 0) {
         data["productImage"].forEach((item, index) => {
@@ -35,9 +34,9 @@ export const addProduct = (data, cb, errorCb) => {
     } else {
       formData.append(key, data[key]);
     }
-    if (key === 'categoryId') {
+    if (key === "categoryId") {
       formData.delete("categoryId");
-      formData.append("categoryId", JSON.stringify(data['categoryId']))
+      formData.append("categoryId", JSON.stringify(data["categoryId"]));
     }
   });
   return (dispatch) =>
@@ -72,9 +71,9 @@ export const updateProduct = (data, cb, errorCb) => {
     } else {
       formData.append(key, data[key]);
     }
-    if (key === 'categoryId') {
+    if (key === "categoryId") {
       formData.delete("categoryId");
-      formData.append("categoryId", JSON.stringify(data['categoryId']))
+      formData.append("categoryId", JSON.stringify(data["categoryId"]));
     }
   });
   return (dispatch) =>
@@ -114,7 +113,6 @@ export const deleteProduct = (data, cb, errorCb) => {
     });
 };
 
-
 export const toggleExpire = (data, cb, errorCb) => {
   return (dispatch) =>
     checkIfAsyncReqSuccess(dispatch, {
@@ -152,3 +150,21 @@ export const sendNotification = (data, cb, errorCb) => {
     });
 };
 
+export const getProductInfo = (data, cb, errorCb) => {
+  return (dispatch) =>
+    checkIfAsyncReqSuccess(dispatch, {
+      successMessage: "Product found successfully",
+      errorMessage: "Failed to find product",
+      enableMessage: true,
+      cb: cb,
+      errorCb: errorCb,
+      type: productTypes.GET_PRODUCT_INFO,
+      payload: {
+        request: {
+          url: productApi.GET_PRODUCT_INFO,
+          method: "post",
+          data: data,
+        },
+      },
+    });
+};

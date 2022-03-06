@@ -54,9 +54,11 @@ const MyTextField = React.forwardRef((props, ref) => {
     handleFileFieldChange(name, files);
   };
   const dispatch = useDispatch();
-  console.log('file', defaultValue);
 
   const initialFiles = () => {
+    if (defaultValue[0]?.name) {
+      return defaultValue;
+    }
     if (typeof defaultValue === "object") {
       let initialFiles = [];
       defaultValue?.map((value) => {

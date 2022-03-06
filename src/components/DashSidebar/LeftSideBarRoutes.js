@@ -4,6 +4,7 @@ import PostIcon from "@mui/icons-material/ImageTwoTone";
 import UserIcon from "@mui/icons-material/AccountCircleTwoTone";
 import ReportIcon from "@mui/icons-material/AssessmentTwoTone";
 import SubCategoryIcon from "@mui/icons-material/SubdirectoryArrowRightTwoTone";
+import AmazonIcon from "../Common/Icons/AmazonIcon";
 
 const LeftSideBarRoutes = [
   {
@@ -39,6 +40,11 @@ const LeftSideBarRoutes = [
     title: "Products",
     icon: <CategoryIcon />,
     path: "/products",
+  },
+  {
+    title: "Amazon Auto Products",
+    icon: <AmazonIcon />,
+    path: "/amazonproducts",
   },
   {
     title: "Offers",

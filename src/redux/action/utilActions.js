@@ -11,3 +11,18 @@ export const getAllThemes = (data) => {
     },
   };
 };
+
+export const openModal = (type, data) => {
+  return {
+    type: utilTypes.OPEN_MODAL,
+    payload: {
+      type: type,
+      data: data,
+    },
+  };
+};
+export const closeModal = (type, data) => {
+  return {
+    type: utilTypes.CLOSE_MODAL,
+  };
+};

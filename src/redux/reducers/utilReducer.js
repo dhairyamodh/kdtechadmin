@@ -3,6 +3,8 @@ import setToken from "../../functions/setToken";
 const initialstate = {
   themes: [],
   spinner: false,
+  modalOpen: undefined,
+  modalData: undefined,
 };
 
 const utilReducer = (state = initialstate, action) => {
@@ -23,6 +25,20 @@ const utilReducer = (state = initialstate, action) => {
       return {
         ...state,
         spinner: false,
+      };
+
+    case utilTypes.OPEN_MODAL:
+      return {
+        ...state,
+        modalOpen: action.payload.type,
+        modalData: action.payload.data,
+      };
+
+    case utilTypes.CLOSE_MODAL:
+      return {
+        ...state,
+        modalOpen: undefined,
+        modalData: undefined,
       };
 
     default:
