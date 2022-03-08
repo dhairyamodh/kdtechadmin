@@ -12,13 +12,13 @@ export const TIME24FORMAT = "HH:mm";
 
 // export const BASEURL = "http://52.55.94.175:4001/api";
 
-// export const BASEURL = "https://lootdealsapp.com/adminapi";
+export const BASEURL = "https://lootdealsapp.com/adminapi";
 
-// export const BASEIMAGEURL = "https://lootdealsapp.com/api/util/file/";
+export const BASEIMAGEURL = "https://lootdealsapp.com/api/util/file/";
 
-export const BASEURL = "http://192.168.0.104:5000/adminapi";
+// export const BASEURL = "http://192.168.0.104:5000/adminapi";
 
-export const BASEIMAGEURL = "http://192.168.0.104:5000/api/util/file/";
+// export const BASEIMAGEURL = "http://192.168.0.104:5000/api/util/file/";
 
 export const TIMEFORMAT = "HH:mm:ss";
 

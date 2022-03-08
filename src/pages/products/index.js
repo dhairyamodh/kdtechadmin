@@ -145,7 +145,16 @@ const Categories = () => {
   ];
 
   const tableHeaders = [
-    { title: "Image", key: "productImage", type: "image" },
+    {
+      title: "Image",
+      key: "productImage",
+      type: "image",
+
+      style: {
+        paddingLeft: 0,
+        paddingRight: 0,
+      },
+    },
     {
       title: "Product Name",
       key: "productName",
@@ -164,12 +173,58 @@ const Categories = () => {
         </span>
       ),
     },
-    { title: "Expire At", key: "expireAt", type: "date" },
+    {
+      title: "Views",
+      key: "viewCount",
+      style: {
+        paddingLeft: 0,
+        paddingRight: 0,
+      },
+    },
+    {
+      title: "Exp.",
+      key: "expireAt",
+      type: "date",
+      style: {
+        paddingLeft: 0,
+        paddingRight: 0,
+      },
+    },
 
-    { title: "Base Price", key: "basePrice", isCurrency: true },
-    { title: "Sale Price", key: "salePrice" },
-    { title: "Status", key: "status" },
-    { title: "Created At", key: "createdAt", type: "date" },
+    {
+      title: "Base Price",
+      key: "basePrice",
+      isCurrency: true,
+      style: {
+        paddingLeft: 0,
+        paddingRight: 0,
+      },
+    },
+    {
+      title: "Sale Price",
+      key: "salePrice",
+      style: {
+        paddingLeft: 0,
+        paddingRight: 0,
+      },
+    },
+    {
+      title: "Status",
+      key: "status",
+      style: {
+        paddingLeft: 0,
+        paddingRight: 0,
+      },
+    },
+    {
+      title: "Created At",
+      key: "createdAt",
+      type: "date",
+      style: {
+        paddingLeft: 0,
+        paddingRight: 0,
+      },
+    },
   ];
 
   const handleExpire = (data) => {
